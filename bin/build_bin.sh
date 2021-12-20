@@ -66,19 +66,7 @@ mkdir -p ${POLY_HOME}/.code/ontio
 mkdir -p ${POLY_HOME}/.code/zouxyan
 
 # bitcoind
-cd ${POLY_HOME}/.code
-if [ ! -d ./bitcoin-0.19.1 ]
-then
-    wget https://bitcoincore.org/bin/bitcoin-core-0.19.1/bitcoin-0.19.1-x86_64-linux-gnu.tar.gz
-fi
-tar -zxf bitcoin-0.19.1-x86_64-linux-gnu.tar.gz
-if [ $? -ne 0 ]
-then
-    echo "${LOG_PREFIX}failed to extract bitcoin"
-    exit 1
-fi
-cp -R bitcoin-0.19.1/* ${POLY_HOME}/lib/bitcoin
-echo "${LOG_PREFIX}bitcoin built"
+
 
 # ethereum
 cd ${POLY_HOME}/.code/
@@ -98,20 +86,7 @@ mv build/bin/geth ${POLY_HOME}/lib/geth/
 echo "${LOG_PREFIX}ethereum built"
 
 # ontology
-cd ${POLY_HOME}/.code/ontio
-if [ ! -d ./ontology ]
-then
-    git clone https://github.com/ontio/ontology.git
-fi
-cd ontology
-make
-if [ $? -ne 0 ]
-then
-    echo "${LOG_PREFIX}failed to build ontology"
-    exit 1
-fi
-mv ontology ${POLY_HOME}/lib/ontology/
-echo "${LOG_PREFIX}ontology built"
+
 
 # poly
 cd ${POLY_HOME}/.code/ontio/
@@ -121,6 +96,7 @@ then
 fi
 cd poly
 git reset --hard $POLY_CMT
+git checkout -b  enterprise  origin/enterprise
 make
 if [ $? -ne 0 ]
 then
@@ -131,78 +107,25 @@ mv poly ${POLY_HOME}/lib/poly/
 echo "${LOG_PREFIX}poly built"
 
 # gaia-demo
-cd ${POLY_HOME}/.code/
-if [ ! -d ./gaia-demo ]
-then
-    git clone https://github.com/skyinglyh1/gaia-demo.git
-fi
-cd gaia-demo/cmd/gaiad/
-git reset --hard $GAIA_DEMO
-go build
-if [ $? -ne 0 ]
-then
-    echo "${LOG_PREFIX}failed to build gaiad"
-    exit 1
-fi
-mv gaiad ${POLY_HOME}/lib/gaia/
 
-cd ${POLY_HOME}/.code/gaia-demo/cmd/gaiacli/
-go build
-if [ $? -ne 0 ]
-then
-    echo "${LOG_PREFIX}failed to build gaiacli"
-    exit 1
-fi
-mv gaiacli ${POLY_HOME}/lib/gaia/
-echo "${LOG_PREFIX}gaia built"
 
 # prepare local code resource for go.mod
 cd ${POLY_HOME}/.code/polynetwork/
-if [ ! -d ./btc-vendor-tools ]
-then
-    git clone https://github.com/polynetwork/btc-vendor-tools.git
-fi
+# if [ ! -d ./btc-vendor-tools ]
+# then
+#     git clone https://github.com/polynetwork/btc-vendor-tools.git
+# fi
 if [ ! -d ./poly-go-sdk ]
 then
     git clone https://github.com/polynetwork/poly-go-sdk.git
 fi
-if [ ! -d ./ontology-go-sdk ]
-then
-    git clone https://github.com/ontio/ontology-go-sdk.git
-fi
+
 
 # btctool
-cd ${POLY_HOME}/.code/zouxyan
-if [ ! -d ./btctool ]
-then
-    git clone https://github.com/zouxyan/btctool.git
-fi
-cd btctool/cmd 
-go build -o btctool main.go
-if [ $? -ne 0 ]
-then
-    echo "${LOG_PREFIX}failed to build btctool"
-    exit 1
-fi
-mv btctool ${POLY_HOME}/lib/tools/
-echo "${LOG_PREFIX}btctool built"
+
 
 # relayer btc
-cd ${POLY_HOME}/.code/polynetwork
-if [ ! -d ./btc-relayer ]
-then
-    git clone https://github.com/polynetwork/btc-relayer.git
-fi
-cd btc-relayer/cmd
-git reset --hard $BTC_RELAYER
-go build -o run_btc_relayer run.go
-if [ $? -ne 0 ]
-then
-    echo "${LOG_PREFIX}failed to build btc relayer"
-    exit 1
-fi
-mv run_btc_relayer ${POLY_HOME}/lib/relayer_btc
-echo "${LOG_PREFIX}btc relayer built"
+
 
 # relayer eth
 cd ${POLY_HOME}/.code/polynetwork
@@ -222,51 +145,27 @@ mv run_eth_relayer ${POLY_HOME}/lib/relayer_eth/
 echo "${LOG_PREFIX}eth relayer built"
 
 # relayer ont
-cd ${POLY_HOME}/.code/polynetwork
-if [ ! -d ./ont-relayer ]
-then
-    git clone https://github.com/polynetwork/ont-relayer.git
-fi
-cd ont-relayer
-git reset --hard $ONT_RELAYER
-go build -o run_ont_relayer main.go
-if [ $? -ne 0 ]
-then
-    echo "${LOG_PREFIX}failed to build ont relayer"
-    exit 1
-fi
-mv run_ont_relayer ${POLY_HOME}/lib/relayer_ont/
-echo "${LOG_PREFIX}ont relayer built"
+# cd ${POLY_HOME}/.code/polynetwork
+# if [ ! -d ./ont-relayer ]
+# then
+#     git clone https://github.com/polynetwork/ont-relayer.git
+# fi
+# cd ont-relayer
+# git reset --hard $ONT_RELAYER
+# go build -o run_ont_relayer main.go
+# if [ $? -ne 0 ]
+# then
+#     echo "${LOG_PREFIX}failed to build ont relayer"
+#     exit 1
+# fi
+# mv run_ont_relayer ${POLY_HOME}/lib/relayer_ont/
+# echo "${LOG_PREFIX}ont relayer built"
 
 # relayer gaia
-cd ${POLY_HOME}/.code/polynetwork
-if [ ! -d ./cosmos-relayer ]
-then
-    git clone https://github.com/polynetwork/cosmos-relayer.git
-fi
-cd cosmos-relayer
-git reset --hard $COSMOS_RELAYER
-go build -o run_gaia_relayer cmd/run.go
-if [ $? -ne 0 ]
-then
-    echo "${LOG_PREFIX}failed to build gaia relayer"
-    exit 1
-fi
-mv run_gaia_relayer ${POLY_HOME}/lib/relayer_gaia/
-echo "${LOG_PREFIX}gaia relayer built"
+
 
 # btc vendors
-cd ${POLY_HOME}/.code/polynetwork
-cd btc-vendor-tools
-git reset --hard $BTC_VENDOR
-go build -o run_vendor cmd/run.go
-if [ $? -ne 0 ]
-then
-    echo "${LOG_PREFIX}failed to build vendor tool"
-    exit 1
-fi
-mv run_vendor ${POLY_HOME}/lib/vendor_tool/
-echo "${LOG_PREFIX}vendor tool built"
+
 
 # tools: 
 cd ${POLY_HOME}/.code/polynetwork
@@ -276,36 +175,36 @@ then
 fi
 cd poly-io-test
 git reset --hard $TEST_CMT
-go build -o btc_prepare cmd/btc_prepare/run.go
-if [ $? -ne 0 ]
-then
-    echo "${LOG_PREFIX}failed to build btc_prepare"
-    exit 1
-fi
-go build -o ont_deployer cmd/ont_deployer/run.go
-if [ $? -ne 0 ]
-then
-    echo "${LOG_PREFIX}failed to build ont_deployer"
-    exit 1
-fi
+# go build -o btc_prepare cmd/btc_prepare/run.go
+# if [ $? -ne 0 ]
+# then
+#     echo "${LOG_PREFIX}failed to build btc_prepare"
+#     exit 1
+# fi
+# go build -o ont_deployer cmd/ont_deployer/run.go
+# if [ $? -ne 0 ]
+# then
+#     echo "${LOG_PREFIX}failed to build ont_deployer"
+#     exit 1
+# fi
 go build -o eth_deployer cmd/eth_deployer/run.go
 if [ $? -ne 0 ]
 then
     echo "${LOG_PREFIX}failed to build eth_deployer"
     exit 1
 fi
-go build -o cosmos_prepare cmd/cosmos_prepare/run.go
-if [ $? -ne 0 ]
-then
-    echo "${LOG_PREFIX}failed to build cosmos_prepare"
-    exit 1
-fi
-go build -o side_chain_mgr cmd/tools/run.go
-if [ $? -ne 0 ]
-then
-    echo "${LOG_PREFIX}failed to build side_chain_mgr"
-    exit 1
-fi
+# go build -o cosmos_prepare cmd/cosmos_prepare/run.go
+# if [ $? -ne 0 ]
+# then
+#     echo "${LOG_PREFIX}failed to build cosmos_prepare"
+#     exit 1
+# fi
+# go build -o side_chain_mgr cmd/tools/run.go
+# if [ $? -ne 0 ]
+# then
+#     echo "${LOG_PREFIX}failed to build side_chain_mgr"
+#     exit 1
+# fi
 go build -o cctest cmd/cctest/main.go
 if [ $? -ne 0 ]
 then
@@ -313,11 +212,11 @@ then
     exit 1
 fi
 
-mv btc_prepare ${POLY_HOME}/lib/tools/contracts_deployer
-mv ont_deployer ${POLY_HOME}/lib/tools/contracts_deployer
+# mv btc_prepare ${POLY_HOME}/lib/tools/contracts_deployer
+# mv ont_deployer ${POLY_HOME}/lib/tools/contracts_deployer
 mv eth_deployer ${POLY_HOME}/lib/tools/contracts_deployer
-mv cosmos_prepare ${POLY_HOME}/lib/tools/contracts_deployer
-mv side_chain_mgr ${POLY_HOME}/lib/tools/side_chain_mgr
+# mv cosmos_prepare ${POLY_HOME}/lib/tools/contracts_deployer
+# mv side_chain_mgr ${POLY_HOME}/lib/tools/side_chain_mgr
 mv cctest ${POLY_HOME}/lib/tools/test_tool
 
 echo "=============================================="
