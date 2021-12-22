@@ -28,16 +28,16 @@ eccd_addr=`cat ${POLY_HOME}/lib/tools/config.json | jq .Eccd`
 cat ${POLY_HOME}/lib/relayer_eth/config.json | jq .ETHConfig.ECCMContractAddress="${eccm_addr}" | jq .ETHConfig.ECCDContractAddress="${eccd_addr}" > ${POLY_HOME}/lib/relayer_eth/config.json1
 mv ${POLY_HOME}/lib/relayer_eth/config.json1 ${POLY_HOME}/lib/relayer_eth/config.json
 
-echo "${LOG_PREFIX}init ont account"
-while true 
-do
-    ${POLY_HOME}/lib/tools/side_chain_mgr -tool init_ont_acc -conf ${POLY_HOME}/lib/tools/config.json -owallets "${POLY_HOME}/lib/ontology/wallet.dat,${POLY_HOME}/lib/ontology/wallet1.dat,${POLY_HOME}/lib/ontology/wallet2.dat,${POLY_HOME}/lib/ontology/wallet3.dat,${POLY_HOME}/lib/ontology/wallet4.dat,${POLY_HOME}/lib/ontology/wallet5.dat,${POLY_HOME}/lib/ontology/wallet6.dat" -opwds "admin,123,123,123,123,123,123"
-    if [ $? -eq 0 ]
-    then
-        break 
-    fi
-    sleep 1
-done
+# echo "${LOG_PREFIX}init ont account"
+# while true 
+# do
+#     ${POLY_HOME}/lib/tools/side_chain_mgr -tool init_ont_acc -conf ${POLY_HOME}/lib/tools/config.json -owallets "${POLY_HOME}/lib/ontology/wallet.dat,${POLY_HOME}/lib/ontology/wallet1.dat,${POLY_HOME}/lib/ontology/wallet2.dat,${POLY_HOME}/lib/ontology/wallet3.dat,${POLY_HOME}/lib/ontology/wallet4.dat,${POLY_HOME}/lib/ontology/wallet5.dat,${POLY_HOME}/lib/ontology/wallet6.dat" -opwds "admin,123,123,123,123,123,123"
+#     if [ $? -eq 0 ]
+#     then
+#         break 
+#     fi
+#     sleep 1
+# done
 
 echo "${BORDER} done ${BORDER}"
 echo
