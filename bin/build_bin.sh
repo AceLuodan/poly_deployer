@@ -199,12 +199,12 @@ fi
 #     echo "${LOG_PREFIX}failed to build cosmos_prepare"
 #     exit 1
 # fi
-# go build -o side_chain_mgr cmd/tools/run.go
-# if [ $? -ne 0 ]
-# then
-#     echo "${LOG_PREFIX}failed to build side_chain_mgr"
-#     exit 1
-# fi
+go build -o side_chain_mgr cmd/tools/run.go
+if [ $? -ne 0 ]
+then
+    echo "${LOG_PREFIX}failed to build side_chain_mgr"
+    exit 1
+fi
 go build -o cctest cmd/cctest/main.go
 if [ $? -ne 0 ]
 then
@@ -216,7 +216,7 @@ fi
 # mv ont_deployer ${POLY_HOME}/lib/tools/contracts_deployer
 mv eth_deployer ${POLY_HOME}/lib/tools/contracts_deployer
 # mv cosmos_prepare ${POLY_HOME}/lib/tools/contracts_deployer
-# mv side_chain_mgr ${POLY_HOME}/lib/tools/side_chain_mgr
+mv side_chain_mgr ${POLY_HOME}/lib/tools/side_chain_mgr
 mv cctest ${POLY_HOME}/lib/tools/test_tool
 
 echo "=============================================="
