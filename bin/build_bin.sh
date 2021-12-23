@@ -174,7 +174,7 @@ then
     git clone https://github.com/polynetwork/poly-io-test.git
 fi
 cd poly-io-test
-git reset --hard $TEST_CMT
+#git reset --hard $TEST_CMT
 # go build -o btc_prepare cmd/btc_prepare/run.go
 # if [ $? -ne 0 ]
 # then
