@@ -134,7 +134,8 @@ then
     git clone https://github.com/polynetwork/eth-relayer.git
 fi
 cd eth-relayer
-git reset --hard $ETH_RELAYER
+#git reset --hard $ETH_RELAYER
+git checkout -b  test1  origin/test
 go build -o run_eth_relayer main.go
 if [ $? -ne 0 ]
 then
