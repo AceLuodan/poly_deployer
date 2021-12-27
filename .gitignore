@@ -1,2 +1,6 @@
 DS*
 .idea/
+.code/
+.code
+.DS_Store
+.DS_Store/

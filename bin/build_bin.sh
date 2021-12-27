@@ -5,7 +5,7 @@ POLY_HOME=`cd "$bin"/..; pwd`
 LOG_PREFIX="---------------------BUILDING: "
 
 # commits
-export POLY_CMT=8083385c9933af59c22f64042cc4850181045096
+# export POLY_CMT=8083385c9933af59c22f64042cc4850181045096
 export ONT_RELAYER=04a071ce01f98678fe1e9b75e3ac73b43301fba6
 export ETH_RELAYER=84d43bdd64f60f7278a02a85454941b9aef10674
 export BTC_RELAYER=c0f8dde8d4cb6c18becd6070382113d36fa56794
@@ -95,7 +95,7 @@ then
     git clone https://github.com/polynetwork/poly.git
 fi
 cd poly
-git reset --hard $POLY_CMT
+# git reset --hard $POLY_CMT
 git checkout -b  enterprise  origin/enterprise
 make
 if [ $? -ne 0 ]
@@ -174,6 +174,7 @@ then
     git clone https://github.com/polynetwork/poly-io-test.git
 fi
 cd poly-io-test
+git checkout -b  enterprise  origin/enterprise
 #git reset --hard $TEST_CMT
 # go build -o btc_prepare cmd/btc_prepare/run.go
 # if [ $? -ne 0 ]
