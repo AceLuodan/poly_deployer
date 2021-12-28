@@ -24,3 +24,4 @@ lib/relayer_eth/config.json
 lib/tools/config.json
 lib/relayer_eth/config.json
 lib/vendor_tool/vendor_tool.json
+bin/Log/
