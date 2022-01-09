@@ -4,15 +4,21 @@ bin=`cd "$bin"; pwd`
 POLY_HOME=`cd "$bin"/..; pwd`
 LOG_PREFIX="---------------------BUILDING: "
 
-# commits
-# export POLY_CMT=8083385c9933af59c22f64042cc4850181045096
-export ONT_RELAYER=04a071ce01f98678fe1e9b75e3ac73b43301fba6
+# commits 最开始
+# export POLY_CMT=8083385#c9933af59c22f64042cc4850181045096
+#Update fabric_handler.go (#71) 31 Jul 2021 https://github.com/polynetwork/poly/commit/0e51ab10951ae2c95b69eeebe6962892b7e67f63
+export POLY_CMT=da2c5521739e4099c3b9868be91e6545f6a1f80e
+# export ONT_RELAYER=04a071ce01f98678fe1e9b75e3ac73b43301fba6
 export ETH_RELAYER=84d43bdd64f60f7278a02a85454941b9aef10674
-export BTC_RELAYER=c0f8dde8d4cb6c18becd6070382113d36fa56794
-export BTC_VENDOR=3b19a5fd76664a7d7c811956f582effcf937810f
-export GAIA_DEMO=d7bdccddca7b01efeabeaa5a7adbacfe75732001
-export COSMOS_RELAYER=2287164b4bd99a175dd6e7a90c848173d850ea38
+# export BTC_RELAYER=c0f8dde8d4cb6c18becd6070382113d36fa56794
+# export BTC_VENDOR=3b19a5fd76664a7d7c811956f582effcf937810f
+# export GAIA_DEMO=d7bdccddca7b01efeabeaa5a7adbacfe75732001
+# export COSMOS_RELAYER=2287164b4bd99a175dd6e7a90c848173d850ea38
+#无fabric 原始的
 export TEST_CMT=8cf514b0775052939ea0e69bf19e90f135ecb612
+#无chainID
+#https://github.com/polynetwork/poly-io-test/commit/803fc65d4faefb45ae7f2339ca989a6e20c43dfd
+
 
 # install tools 
 if [ ! -x "$(command -v expect)" ]
@@ -69,21 +75,22 @@ mkdir -p ${POLY_HOME}/.code/zouxyan
 
 
 # ethereum
-cd ${POLY_HOME}/.code/
-if [ ! -d ./go-ethereum ]
-then
-    git clone https://github.com/ethereum/go-ethereum.git
-fi
-cd go-ethereum
-git checkout v1.9.15
-make
-if [ $? -ne 0 ]
-then
-    echo "${LOG_PREFIX}failed to build ethereum"
-    exit 1
-fi
-mv build/bin/geth ${POLY_HOME}/lib/geth/
-echo "${LOG_PREFIX}ethereum built"
+# cd ${POLY_HOME}/.code/
+# if [ ! -d ./go-ethereum ]
+# then
+#     git clone https://github.com/ethereum/go-ethereum.git
+# fi
+# cd go-ethereum
+# #git checkout v1.9.18
+# git checkout v1.10.1
+# make
+# if [ $? -ne 0 ]
+# then
+#     echo "${LOG_PREFIX}failed to build ethereum"
+#     exit 1
+# fi
+# mv build/bin/geth ${POLY_HOME}/lib/geth/
+# echo "${LOG_PREFIX}ethereum built"
 
 # ontology
 
@@ -92,7 +99,8 @@ echo "${LOG_PREFIX}ethereum built"
 cd ${POLY_HOME}/.code/ontio/
 if [ ! -d ./poly ]
 then
-    git clone https://github.com/polynetwork/poly.git
+    # git clone https://github.com/polynetwork/poly.git
+    git clone https://github.com/AceLuodan/poly
 fi
 cd poly
 # git reset --hard $POLY_CMT
@@ -119,7 +127,7 @@ if [ ! -d ./poly-go-sdk ]
 then
     git clone https://github.com/polynetwork/poly-go-sdk.git
 fi
-
+git checkout -b  enterprise  origin/enterprise
 
 # btctool
 
@@ -131,11 +139,13 @@ fi
 cd ${POLY_HOME}/.code/polynetwork
 if [ ! -d ./eth-relayer ]
 then
-    git clone https://github.com/polynetwork/eth-relayer.git
+    git clone https://github.com/AceLuodan/eth-relayer
+    # git clone https://github.com/polynetwork/eth-relayer/
 fi
 cd eth-relayer
-git reset --hard $ETH_RELAYER
-git checkout -b  test1  origin/test
+# git reset --hard $ETH_RELAYER
+# git checkout -b  test1  origin/test
+go mod tidy
 go build -o run_eth_relayer main.go
 if [ $? -ne 0 ]
 then
@@ -172,23 +182,13 @@ echo "${LOG_PREFIX}eth relayer built"
 cd ${POLY_HOME}/.code/polynetwork
 if [ ! -d ./poly-io-test ]
 then
-    git clone https://github.com/polynetwork/poly-io-test.git
+    # git clone https://github.com/polynetwork/poly-io-test
+    git clone https://github.com/AceLuodan/poly-io-test.git
 fi
 cd poly-io-test
 git checkout -b  enterprise  origin/enterprise
-#git reset --hard $TEST_CMT
-# go build -o btc_prepare cmd/btc_prepare/run.go
-# if [ $? -ne 0 ]
-# then
-#     echo "${LOG_PREFIX}failed to build btc_prepare"
-#     exit 1
-# fi
-# go build -o ont_deployer cmd/ont_deployer/run.go
-# if [ $? -ne 0 ]
-# then
-#     echo "${LOG_PREFIX}failed to build ont_deployer"
-#     exit 1
-# fi
+# git reset --hard 803fc65d4faefb45ae7f2339ca989a6e20c43dfd
+go mod tidy
 go build -o eth_deployer cmd/eth_deployer/run.go
 if [ $? -ne 0 ]
 then
