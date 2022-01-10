@@ -12,12 +12,12 @@ POLY_HOME=`cd "$bin"/..; pwd`
 #     echo "failed to start bitcoin"
 #     exit 1
 # fi
-${POLY_HOME}/bin/start_eth_chain.sh
-if [ $? -ne 0 ]
-then
-    echo "failed to start ethereum"
-    exit 1
-fi
+# ${POLY_HOME}/bin/start_eth_chain.sh
+# if [ $? -ne 0 ]
+# then
+#     echo "failed to start ethereum"
+#     exit 1
+# fi
 # ${POLY_HOME}/bin/start_ont_chain.sh
 # if [ $? -ne 0 ]
 # then
