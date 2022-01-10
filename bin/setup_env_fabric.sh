@@ -24,7 +24,7 @@ fi
 # fi
 
 echo "${LOG_PREFIX}start to SyncFabricRootCA to poly chain"
-${POLY_HOME}/lib/tools/side_chain_mgr -tool sync_fabric_root_ca -rootca "/Users/danluo/Desktop/ld/github/new/fabric-relayer/root-cert.pem"  -chainid 7  -conf ${POLY_HOME}/lib/tools/config.json -pwallets "${POLY_HOME}/lib/poly/wallet.dat,${POLY_HOME}/lib/poly/wallet1.dat,${POLY_HOME}/lib/poly/wallet2.dat,${POLY_HOME}/lib/poly/wallet3.dat" -ppwds "4cUYqGj2yib718E7ZmGQc,4cUYqGj2yib718E7ZmGQc,4cUYqGj2yib718E7ZmGQc,4cUYqGj2yib718E7ZmGQc"
+${POLY_HOME}/lib/tools/side_chain_mgr -tool sync_fabric_root_ca -rootca "/root/fabric-relayer/root-cert.pem"  -chainid 7  -conf ${POLY_HOME}/lib/tools/config.json -pwallets "${POLY_HOME}/lib/poly/wallet.dat,${POLY_HOME}/lib/poly/wallet1.dat,${POLY_HOME}/lib/poly/wallet2.dat,${POLY_HOME}/lib/poly/wallet3.dat" -ppwds "4cUYqGj2yib718E7ZmGQc,4cUYqGj2yib718E7ZmGQc,4cUYqGj2yib718E7ZmGQc,4cUYqGj2yib718E7ZmGQc"
 if [ $? -ne 0 ]
 then
     echo "${LOG_PREFIX}failed to SyncFabricRootCA"
