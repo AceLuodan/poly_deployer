@@ -95,7 +95,7 @@
   "FabricPEth": "peth",
   "FabricLockProxy": "lockproxy",
   "FabricCCM":"ccm",
-  "FabricChainID": 7,
+  "FabricBond": "bond",
   "FabricChannel": "mainchannel",
   "FabricSdkConfFile": "/root/fabric-relayer/config/config_e2e.yaml",
   "FabricUser": "Admin",
