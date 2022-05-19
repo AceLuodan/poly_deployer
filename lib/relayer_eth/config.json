@@ -2,7 +2,7 @@
   "PolyConfig": {
     "RestURL": "http://0.0.0.0:40336",
     "EntranceContractAddress": "0300000000000000000000000000000000000000",
-    "WalletFile": "/data/poly_deployer_linux/lib/poly/wallet.dat",
+    "WalletFile": "/root/poly/poly_deployer/lib/poly/wallet.dat",
     "WalletPwd": "4cUYqGj2yib718E7ZmGQc"
   },
   "ETHConfig": {
@@ -10,7 +10,7 @@
     "RestURL": "https://rinkeby.infura.io/v3/63aa887d1b4b4a999ca3c3392500960c",
     "ECCMContractAddress": "0x742285522084dd617A846c548d4Aa869d9477a7c",
     "ECCDContractAddress": "0xd8ed8A378D5AA29f1d87663E527E2D690120689A",
-    "KeyStorePath": "/Users/danluo/Desktop/ld/github/new/temp/poly_deployer/lib/relayer_eth",
+    "KeyStorePath": "/root/poly/poly_deployer/lib/relayer_eth",
     "KeyStorePwdSet": {
       "0xb7ee265d94446f465dba65002a9960d4bef9dca7": "123"
     },
@@ -18,7 +18,7 @@
     "HeadersPerBatch": 50,
     "MonitorInterval": 3
   },
-  "BoltDbPath": "/Users/danluo/Desktop/ld/github/new/temp/poly_deployer/data/eth/relayer/boltdb",
+  "BoltDbPath": "/root/poly/poly_deployer/data/eth/relayer/boltdb",
   "RoutineNum": 64
 }
 
