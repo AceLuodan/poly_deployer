@@ -43,13 +43,6 @@
   "NeoWif": "",
   "NeoEpoch": 0,
   "FiscoSdkConfFile": "",
-  "FabricChannel": "mainchannel",
-  "FabricSdkConfFile": "/root/fabric-relayer/config/config_e2e.yaml",
-  "FabricUser": "Admin",
-  "FabricOrg": "Org1",
-  "FabricAccAddr": "a17e8fc931943ed138943e561f3fd7ee1b0bd4e1",
-  "FabricMSPPath": "/root/fabric-relayer",
-  "FabricCCM":"ccm",
   "RCWallet": "/root/poly/poly_deployer/lib/poly/wallet.dat",
   "RCWalletPwd": "4cUYqGj2yib718E7ZmGQc",
   "RchainJsonRpcAddress": "http://127.0.0.1:40336",
@@ -122,7 +115,4 @@
   "USDCValLimit": 0,
   "RenBTCValLimit": 0,
   "OntdValFloor": 0
-
-
-
 }
