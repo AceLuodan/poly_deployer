@@ -8,8 +8,8 @@
   "ETHConfig": {
     "SideChainId": 2,
     "RestURL": "https://rinkeby.infura.io/v3/63aa887d1b4b4a999ca3c3392500960c",
-    "ECCMContractAddress": "0x742285522084dd617A846c548d4Aa869d9477a7c",
-    "ECCDContractAddress": "0xd8ed8A378D5AA29f1d87663E527E2D690120689A",
+    "ECCMContractAddress": "0x50aeb77d5b8aA4Aaf10721e92A4a4570B679162e",
+    "ECCDContractAddress": "0xD98C417347B5475Feb0c0717e7505470E21CA5d6",
     "KeyStorePath": "/root/poly/poly_deployer/lib/relayer_eth",
     "KeyStorePwdSet": {
       "0xb7ee265d94446f465dba65002a9960d4bef9dca7": "123"
@@ -21,4 +21,3 @@
   "BoltDbPath": "/root/poly/poly_deployer/data/eth/relayer/boltdb",
   "RoutineNum": 64
 }
-
