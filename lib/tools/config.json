@@ -46,7 +46,7 @@
 	"FabricSdkConfFile": "/root/fabric-relayer/config/config_e2e.yaml",
 	"FabricUser": "Admin",
 	"FabricOrg": "Org1",
-	"FabricAccAddr": "a17e8fc931943ed138943e561f3fd7ee1b0bd4e1",
+	"FabricAccAddr": "eb7f41c4bc9e65c0fdf335f2a66be352b7f7f929",
 	"FabricMSPPath": "/root/fabric-relayer",
 	"RCWallet": "/root/poly/poly_deployer/lib/poly/wallet.dat",
 	"RCWalletPwd": "4cUYqGj2yib718E7ZmGQc",
