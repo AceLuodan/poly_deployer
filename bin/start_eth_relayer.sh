@@ -22,7 +22,7 @@ then
     mkdir -p ${POLY_HOME}/log/eth/relayer/
 fi
 
-${POLY_HOME}/lib/relayer_eth/run_eth_relayer --logdir ${POLY_HOME}/log/eth/relayer/ --cliconfig ${POLY_HOME}/lib/relayer_eth/config.json >> /dev/null 2>&1 &
+${POLY_HOME}/lib/relayer_eth/run_eth_relayer --logdir ${POLY_HOME}/log/eth/relayer/ --cliconfig ${POLY_HOME}/lib/relayer_eth/config.json --ethereum 10747000 --ethereumforce 10747000 >> /dev/null 2>&1 &
 sleep 1
 pid=`ps -ewf | grep ${POLY_HOME}.*run_eth_relayer | grep -v grep | awk '{print $2}'`
 if [ ! -n "${pid}" ]
