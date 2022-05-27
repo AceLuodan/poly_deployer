@@ -32,8 +32,8 @@ then
 fi
 
 echo "${LOG_PREFIX}start to  fabric relayer"
-#${POLY_HOME}/lib/tools/side_chain_mgr -tool sync_fabric_root_ca -rootca "/Users/danluo/Desktop/ld/github/new/fabric-relayer/root-cert.pem"  -chainid 7  -conf ${POLY_HOME}/lib/tools/config.json -pwallets "${POLY_HOME}/lib/poly/wallet.dat,${POLY_HOME}/lib/poly/wallet1.dat,${POLY_HOME}/lib/poly/wallet2.dat,${POLY_HOME}/lib/poly/wallet3.dat" -ppwds "4cUYqGj2yib718E7ZmGQc,4cUYqGj2yib718E7ZmGQc,4cUYqGj2yib718E7ZmGQc,4cUYqGj2yib718E7ZmGQc"
-/root/fabric-relayer/cmd/cmd  --loglevel 1  > /root/fabric-relayer/mylog.log 2>&1 &
+# ${POLY_HOME}/lib/tools/side_chain_mgr -tool sync_fabric_root_ca -rootca "/Users/danluo/Desktop/ld/github/new/fabric-relayer/root-cert.pem"  -chainid 7  -conf ${POLY_HOME}/lib/tools/config.json -pwallets "${POLY_HOME}/lib/poly/wallet.dat,${POLY_HOME}/lib/poly/wallet1.dat,${POLY_HOME}/lib/poly/wallet2.dat,${POLY_HOME}/lib/poly/wallet3.dat" -ppwds "4cUYqGj2yib718E7ZmGQc,4cUYqGj2yib718E7ZmGQc,4cUYqGj2yib718E7ZmGQc,4cUYqGj2yib718E7ZmGQc"
+# /root/fabric-relayer/cmd/cmd  --loglevel 1  > /root/fabric-relayer/mylog.log 2>&1 &
 if [ $? -ne 0 ]
 then
     echo "${LOG_PREFIX}failed to fabric relayer"
