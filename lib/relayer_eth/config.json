@@ -1,6 +1,6 @@
 {
   "PolyConfig": {
-    "RestURL": "http://0.0.0.0:40336",
+    "RestURL": "http://127.0.0.1:40336",
     "EntranceContractAddress": "0300000000000000000000000000000000000000",
     "WalletFile": "/root/poly/poly_deployer/lib/poly/wallet.dat",
     "WalletPwd": "4cUYqGj2yib718E7ZmGQc"
@@ -8,8 +8,8 @@
   "ETHConfig": {
     "SideChainId": 2,
     "RestURL": "https://rinkeby.infura.io/v3/63aa887d1b4b4a999ca3c3392500960c",
-    "ECCMContractAddress": "0x50aeb77d5b8aA4Aaf10721e92A4a4570B679162e",
-    "ECCDContractAddress": "0xD98C417347B5475Feb0c0717e7505470E21CA5d6",
+    "ECCMContractAddress": "0xC2fe91cf1Ea2ba2E92a4D0D519601dc50CAA8347",
+    "ECCDContractAddress": "0x4C2AC304E9698A79261B17A67247d8d2650BB2C4",
     "KeyStorePath": "/root/poly/poly_deployer/lib/relayer_eth",
     "KeyStorePwdSet": {
       "0xb7ee265d94446f465dba65002a9960d4bef9dca7": "123"

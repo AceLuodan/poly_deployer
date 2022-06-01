@@ -8,7 +8,7 @@ BORDER="----------------------------------------------"
 echo "${BORDER} start fabric cross test  ${BORDER}"
 
 
-${POLY_HOME}/lib/tools/test_tool --cfg /root/poly/poly_deployer/lib/tools/config.json --t EthFabricCircle 
+${POLY_HOME}/lib/tools/test_tool --cfg /root/poly/poly_deployer/lib/tools/config.json --t FabricToEthTo
 if [ $? -ne 0 ]
 then
     echo "${LOG_PREFIX} failed to start fabric cross test"
